@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 export const GET_MESSAGES = 'hello/messages/MESSAGES';
 
 const initialState = {
@@ -7,9 +8,9 @@ const initialState = {
 export const setMessages = (payload) => ({
   type: GET_MESSAGES,
   payload,
-})
+});
 
-export const getMessages = () => (dispatch) => {
+export const getMessages = () => async (dispatch) => {
   const result = await fetch('http://localhost:3000/v1/messages');
   const data = await result.json();
   dispatch(setMessages(data));
